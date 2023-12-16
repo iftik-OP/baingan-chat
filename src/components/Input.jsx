@@ -17,6 +17,8 @@ import { upload } from "@testing-library/user-event/dist/upload";
 
 const Input = () => {
   const [text, setText] = useState("");
+  const [tempText, setTempText] = useState("");
+
   const [img, setImg] = useState(null);
 
   useEffect(() => {
@@ -37,6 +39,7 @@ const Input = () => {
   const { data } = useContext(ChatContext);
 
   const handleSend = async () => {
+    setTempText(text);
     setText("");
     if (img) {
       const storageRef = ref(storage, uuid());
@@ -99,7 +102,7 @@ const Input = () => {
       [data.chatId + ".date"]: serverTimestamp(),
     });
 
-    setText("");
+    setTempText("");
     setImg(null);
   };
   return (

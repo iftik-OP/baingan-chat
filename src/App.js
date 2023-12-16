@@ -33,6 +33,7 @@ function App() {
           <Route path="register" element={<Register />} />
         </Route>
       </Routes>
+      <SpeedInsights />
     </BrowserRouter>
   );
 }

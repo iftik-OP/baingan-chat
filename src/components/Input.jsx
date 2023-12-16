@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Img from "../img/img.png";
 import Attach from "../img/attach.png";
 import { AuthContext } from "../context/AuthContext";
@@ -18,6 +18,13 @@ import { upload } from "@testing-library/user-event/dist/upload";
 const Input = () => {
   const [text, setText] = useState("");
   const [img, setImg] = useState(null);
+
+  useEffect(() => {
+    // Check if img is not null and then call handleSubmit
+    if (img !== null) {
+      handleSend();
+    }
+  }, [img]);
 
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
@@ -59,7 +66,7 @@ const Input = () => {
       //     });
       //   }
       // );
-    } else {
+    } else if(text!==""){
       await updateDoc(doc(db, "chats", data.chatId), {
         messages: arrayUnion({
           id: uuid(),

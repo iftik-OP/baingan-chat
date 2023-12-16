@@ -5,6 +5,8 @@ import { auth, db, storage } from "../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate, Link } from "react-router-dom";
+import background from "../img/background.png";
+
 
 const Register = () => {
   const [err, setErr] = useState(false);
@@ -79,9 +81,10 @@ const Register = () => {
           {err && <span>Something went wrong</span>}
         </form>
         <p>
-          You do have an account? <Link to="/login">Login</Link>
+          You do have an account? <Link className="link" to="/login">Login</Link>
         </p>
       </div>
+      <img className="background" src={background} alt="" />
     </div>
   );
 };

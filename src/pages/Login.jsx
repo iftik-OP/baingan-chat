@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
+import background from "../img/background.png";
 
 const Login = () => {
   const [err, setErr] = useState(false);
@@ -21,6 +22,7 @@ const Login = () => {
   };
   return (
     <div className="formContainer">
+      
       <div className="formWrapper">
         <span className="logo">Baingan Chat</span>
         <span className="title">Login</span>
@@ -31,9 +33,10 @@ const Login = () => {
           {err && <span>Something went wrong</span>}
         </form>
         <p>
-          You don't have an account? <Link to="/register">Register</Link>
+          You don't have an account? <Link className="link" to="/register">Register</Link>
         </p>
       </div>
+      <img className="background" src={background} alt="" />
     </div>
   );
 };

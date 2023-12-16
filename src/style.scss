@@ -15,15 +15,30 @@
 }
 
 .formContainer {
+  font-family: 'poppins', sans-serif; 
   background-color: #a7bcff;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
 
+  //write the css such that the white background looks like glass and color accordingly
   .formWrapper {
-    background-color: white;
-    padding: 20px 60px;
+    backdrop-filter: blur(10px);
+    position: absolute;
+    z-index: 1;
+    background-color: rgba(255,255,255,0.13);
+    padding: 40px 60px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -31,14 +46,14 @@
     align-items: center;
 
     .logo {
-      color: #5d5b8d;
+      color: #42013a;
       font-weight: bold;
       font-size: 24px;
 
     }
 
     .title {
-      color: #5d5b8d;
+      color: #f8a0f8;
       font-size: 12px;
     }
 
@@ -48,17 +63,19 @@
       gap: 15px;
 
       input {
+        display: block;
+        background-color: rgba(255,255,255,0.07);
         padding: 15px;
         border: none;
         width: 250px;
-        border-bottom: 1px solid #a7bcff;
+        border-bottom: 1px solid #e3a7ff;
         &::placeholder {
-          color: rgb(175, 175, 175);
+          color: #e5e5e541;
         }
       }
 
       button {
-        background-color: #7b96ec;
+        background-color: #cd6afb;
         color: white;
         padding: 10px;
         font-weight: bold;
@@ -80,9 +97,14 @@
       }
     }
     p {
-      color: #5d5b8d;
+      color: #d8d8da;
       font-size: 12px;
       margin-top: 10px;
+      .link{
+        
+        color: #db8df1;
+        cursor: pointer;
+      }
     }
   }
 }
@@ -94,8 +116,22 @@
   align-items: center;
   justify-content: center;
 
+  .background {
+    backdrop-filter: blur(10px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
   .container {
-    border: 1px solid white;
+    backdrop-filter: blur(10px);
+    position: absolute;
+    z-index: 1;
+    border: 1px solid rgba(255, 255, 255, 0.189);
     border-radius: 10px;
     width: 65%;
     height: 80%;
@@ -107,7 +143,7 @@
 
     .sidebar {
       flex: 1;
-      background-color: #3e3c61;
+      background-color: #5e1c609a;
       position: relative;
 
       .navbar {
@@ -164,7 +200,7 @@
             outline: none;
 
             &::placeholder {
-              color: lightgray;
+              color: rgba(211, 211, 211, 0.578);
             }
           }
         }
@@ -206,7 +242,7 @@
 
       .chatInfo {
         height: 50px;
-        background-color: #5d5b8d;
+        background-color: #5d5b8da5;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -225,10 +261,15 @@
       }
 
       .messages {
-        background-color: #ddddf7;
+        background-color: #cc7ff59b;
         padding: 10px;
         height: calc(100% - 160px);
-        overflow: scroll;
+        overflow: hidden;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+          width: 0px;
+        }
+        
 
         .message {
           display: flex;
@@ -238,8 +279,9 @@
           .messageInfo {
             display: flex;
             flex-direction: column;
-            color: gray;
+            color: rgb(216, 215, 216);
             font-weight: 300;
+            font-size: 10px;
 
             img {
               width: 40px;
@@ -255,10 +297,11 @@
             gap: 10px;
 
             p {
-              background-color: white;
+              background-color: rgb(70, 23, 80);
               padding: 10px 20px;
               border-radius: 0px 10px 10px 10px;
               max-width: max-content;
+              color: white;
             }
 
             img {
@@ -272,7 +315,7 @@
             .messageContent {
               align-items: flex-end;
               p {
-                background-color: #8da4f1;
+                background-color: #e58ff6;
                 color: white;
                 border-radius: 10px 0px 10px 10px;
               }
@@ -283,7 +326,7 @@
 
       .input {
         height: 50px;
-        background-color: white;
+        background-color: rgba(255, 255, 255, 0.297);
         padding: 10px;
         display: flex;
         align-items: center;
@@ -294,10 +337,10 @@
           border: none;
           outline: none;
           color: #2f2d52;
-          font-size: 18px;
-
+          font-size: 12px;
+          background-color: transparent;
           &::placeholder {
-            color: lightgray;
+            color: rgba(255, 255, 255, 0.427);
           }
         }
 
@@ -313,9 +356,10 @@
 
           button {
             border: none;
-            padding: 10px 15px;
-            color: white;
-            background-color: #8da4f1;
+            border-radius: 40px;
+            padding: 10px 22px;
+            color: rgb(248, 234, 251);
+            background-color: #f245f5;
             cursor: pointer;
           }
         }

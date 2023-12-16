@@ -5,6 +5,7 @@ import "./style.scss";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 function App() {
   const { currentUser } = useContext(AuthContext);

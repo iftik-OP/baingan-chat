@@ -26,10 +26,18 @@ const Input = () => {
     }
   }, [img]);
 
+  const handleEnterPress = (e) => {
+    if (e.key === "Enter") {
+      // Call your function here
+      handleSend();
+    }
+  };
+
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
 
   const handleSend = async () => {
+    setText("");
     if (img) {
       const storageRef = ref(storage, uuid());
       await uploadBytesResumable(storageRef, img).then(() => {
@@ -66,7 +74,7 @@ const Input = () => {
       //     });
       //   }
       // );
-    } else if(text!==""){
+    } else if (text !== "") {
       await updateDoc(doc(db, "chats", data.chatId), {
         messages: arrayUnion({
           id: uuid(),
@@ -101,6 +109,7 @@ const Input = () => {
         placeholder="Type something..."
         onChange={(e) => setText(e.target.value)}
         value={text}
+        onKeyDown={handleEnterPress}
       />
       <div className="send">
         <img src={Attach} alt="" />
